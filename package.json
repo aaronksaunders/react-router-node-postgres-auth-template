@@ -1,0 +1,46 @@
+{
+  "name": "my-react-router-app",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "react-router build",
+    "db:generate": "dotenv -- drizzle-kit generate",
+    "db:migrate": "dotenv -- drizzle-kit migrate",
+    "dev": "dotenv -- node server.js",
+    "start": "node server.js",
+    "typecheck": "react-router typegen && tsc --build --noEmit"
+  },
+  "dependencies": {
+    "@react-router/express": "^7.0.1",
+    "@react-router/node": "^7.0.1",
+    "compression": "^1.7.5",
+    "drizzle-orm": "~0.36.3",
+    "express": "^4.21.1",
+    "isbot": "^5.1.17",
+    "morgan": "^1.10.0",
+    "postgres": "^3.4.5",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "react-router": "^7.0.1"
+  },
+  "devDependencies": {
+    "@react-router/dev": "^7.0.1",
+    "@types/compression": "^1.7.5",
+    "@types/express": "^5.0.0",
+    "@types/express-serve-static-core": "^5.0.1",
+    "@types/morgan": "^1.9.9",
+    "@types/node": "^20",
+    "@types/pg": "^8.11.10",
+    "@types/react": "^18.3.12",
+    "@types/react-dom": "^18.3.1",
+    "autoprefixer": "^10.4.20",
+    "dotenv-cli": "^7.4.3",
+    "drizzle-kit": "~0.28.1",
+    "postcss": "^8.4.49",
+    "tailwindcss": "^3.4.15",
+    "tsx": "^4.19.2",
+    "typescript": "^5.6.3",
+    "vite": "^5.4.11",
+    "vite-tsconfig-paths": "^5.1.2"
+  }
+}
