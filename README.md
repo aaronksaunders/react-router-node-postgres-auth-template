@@ -11,7 +11,29 @@ A modern, production-ready template for building full-stack React applications u
 - 🔒 TypeScript by default
 - 🎉 TailwindCSS for styling
 - 💾 PostgreSQL + DrizzleORM
+- 🔑 User authentication with login and registration
 - 📖 [React Router docs](https://reactrouter.com/)
+
+## Authentication
+
+### Registration
+
+Users can register for an account by navigating to the registration page. The registration form requires the following information:
+
+- **Username**: A unique username for the user.
+- **Email**: A valid email address (must be unique).
+- **Password**: A secure password (minimum length of 6 characters).
+
+Upon successful registration, users will be redirected to the login page.
+
+### Login
+
+After registration, users can log in using their credentials. The login form requires:
+
+- **Email**: The email address used during registration.
+- **Password**: The password associated with the account.
+
+Upon successful login, users will be redirected to the home page.
 
 ## Getting Started
 

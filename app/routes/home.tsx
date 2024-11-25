@@ -1,8 +1,11 @@
-import { database } from "~/database/context";
-import * as schema from "~/database/schema";
-
 import type { Route } from "./+types/home";
 import { Welcome } from "../welcome/welcome";
+import { useSubmit } from "react-router";
+import {
+  addGuestBookEntry,
+  getGuestBookEntries,
+} from "~/services/guestbook.server";
+import { getUserSessionData } from "~/services/session.server";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -25,36 +28,34 @@ export async function action({ request }: Route.ActionArgs) {
     return { guestBookError: "Name and email are required" };
   }
 
-  const db = database();
   try {
-    await db.insert(schema.guestBook).values({ name, email });
+    await addGuestBookEntry(name, email);
   } catch (error) {
     return { guestBookError: "Error adding to guest book" };
   }
 }
 
-export async function loader({ context }: Route.LoaderArgs) {
-  const db = database();
+export async function loader({ context, request }: Route.LoaderArgs) {
+  const user = await getUserSessionData(request);
 
-  const guestBook = await db.query.guestBook.findMany({
-    columns: {
-      id: true,
-      name: true,
-    },
-  });
+  const guestBook = await getGuestBookEntries();
 
   return {
     guestBook,
+    user: user,
     message: context.VALUE_FROM_EXPRESS,
   };
 }
 
 export default function Home({ actionData, loaderData }: Route.ComponentProps) {
+  console.log("Home component rendered", loaderData);
+  const submit = useSubmit();
   return (
     <Welcome
       guestBook={loaderData.guestBook}
       guestBookError={actionData?.guestBookError}
-      message={loaderData.message}
+      message={"Hello " + (loaderData.user as any).username}
+      onLogout={() => submit(null, { method: "post", action: "/logout" })}
     />
   );
 }
