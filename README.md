@@ -1,6 +1,6 @@
-# Welcome to React Router!
+# React Router Node Postgres Template w/ Authentication
 
-A modern, production-ready template for building full-stack React applications using React Router.
+A modern, production-ready template for building full-stack React applications using React Router, based on the official [node-postgres template](https://github.com/remix-run/react-router-templates/tree/main/node-postgres)
 
 ## Features
 
